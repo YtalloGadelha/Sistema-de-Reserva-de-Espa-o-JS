@@ -7,7 +7,6 @@ exports.up = function(knex, Promise) {
 		table.integer("id_espaco").notNullable();
 		table.foreign("id_espaco").references("Espacos.id_espaco");
 		table.date("data_reserva_inicio").notNullable();
-		table.date("data_reserva_termino").notNullable();
 	});
 };
 
