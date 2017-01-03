@@ -1,1 +1,1 @@
-angular.module("hellosystem",[]);
+angular.module("hellosystem",["ngRoute"]);
