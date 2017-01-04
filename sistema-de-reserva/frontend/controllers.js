@@ -1,3 +1,4 @@
+//controller pessoas
 angular.module("hellosystem").controller("pessoacontroller", function(pessoaservice){
 
   this.nova_pessoa = {};
@@ -18,6 +19,7 @@ angular.module("hellosystem").controller("pessoacontroller", function(pessoaserv
   };
 });
 
+//controller espaços
 angular.module("hellosystem").controller("espacocontroller", function(espacoservice){
 
   this.novo_espaco = {};
@@ -38,6 +40,27 @@ angular.module("hellosystem").controller("espacocontroller", function(espacoserv
   };
 });
 
+//controller reservas
+angular.module("hellosystem").controller("reservacontroller", function(reservaservice){
+
+  this.nova_reserva = {};
+
+  this.listar = () => reservaservice.buscareservas().then( (ret) => {
+      this.reservas = ret.data;
+  });
+
+  this.listar();
+
+  this.salvareserva = () => {
+      reservaservice.salvareserva(this.nova_reserva).then( (ret) => {
+      alert("Reserva salva com id " + ret.data.id_reserva);
+      this.listar();
+      this.nova_reserva = {};
+    });
+  };
+});
+
+
 // roteamento
 angular.module("hellosystem").config(($routeProvider) => {
 
@@ -52,6 +75,12 @@ angular.module("hellosystem").config(($routeProvider) => {
     templateUrl:"espacos.html",
     controllerAs:"ctl"
   });
+
+   $routeProvider.when("/reservas", {
+    controller:"reservacontroller",
+    templateUrl:"reservas.html",
+    controllerAs:"ctl"
+   });
 
   $routeProvider.otherwise("/pessoas");
 

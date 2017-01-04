@@ -47,5 +47,29 @@ app.post("/espaco", (req,res) => {
   });
 });
 
-app.listen(3000);
+//Tabela Reservas
+app.get("/reservas" ,(req,res) => {
+
+  knex("Reservas").select().then((ret) => res.send(ret));
+});
+
+app.post("/reserva", (req,res) => {
+  var nova_reserva = req.body;
+
+  knex("Reservas").insert({
+    nome_pessoa:nova_reserva.nome_pessoa,
+    nome_espaco:nova_reserva.nome_espaco,
+    data_inicio_reserva:nova_reserva.data_inicio_reserva,
+    data_termino_reserva:nova_reserva.data_termino_reserva
+  }).then((ret) => {
+    nova_reserva.id_reserva = ret[0];
+    res.send(nova_reserva);
+  }).catch((err) => {
+    console.log(err);
+    res.status(500).send(err);
+  });
+});
+
+
+app.listen(4000);
 console.log("App online!");

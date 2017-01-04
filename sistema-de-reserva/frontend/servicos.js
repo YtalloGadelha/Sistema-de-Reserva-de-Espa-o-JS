@@ -13,3 +13,11 @@ angular.module("hellosystem").service("espacoservice", function ($http){
   this.salvaespaco = (ev) => $http.post("espaco",ev);
 
 });
+
+angular.module("hellosystem").service("reservaservice", function ($http){
+
+	this.buscareservas = () => $http.get("reservas");
+
+	this.salvareserva = (ev) => $http.post("reserva",ev);
+
+});
