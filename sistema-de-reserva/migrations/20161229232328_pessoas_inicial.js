@@ -1,10 +1,10 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTableIfNotExist("Pessoas", (table) => {
+  return knex.schema.createTableIfNotExists("Pessoas", (table) => {
   	table.increments("id_pessoa");
   	table.string("nome_pessoa").notNullable();
   });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExist("Pessoas");
+  return knex.schema.dropTableIfExists("Pessoas");
 };

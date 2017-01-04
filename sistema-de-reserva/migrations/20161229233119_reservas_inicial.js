@@ -1,6 +1,6 @@
 
 exports.up = function(knex, Promise) {
-	return knex.schema.createTableIfNotExist("Reservas", (table) => {
+	return knex.schema.createTableIfNotExists("Reservas", (table) => {
 		table.increments("id_reserva");
 		table.integer("id_pessoa").notNullable();
 		table.foreign("id_pessoa").references("Pessoas.id_pessoa");
