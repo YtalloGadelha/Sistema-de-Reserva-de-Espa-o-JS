@@ -22,15 +22,15 @@ angular.module("hellosystem").controller("espacocontroller", function(espacoserv
 
   this.novo_espaco = {};
 
-  this.listar = () => espacoservice.buscaespaco().then( (ret) => {
+  this.listar = () => espacoservice.buscaespacos().then( (ret) => {
     this.espacos = ret.data;
   });
 
   // carregar a lista imediatamente após carregar o controlador
   this.listar();
 
-  this.salvapessoa = () => {
-    espacoservice.salvaespacos(this.novo_espaco).then( (ret) => {
+  this.salvaespaco = () => {
+    espacoservice.salvaespaco(this.novo_espaco).then( (ret) => {
       alert("Espaço salvo com id "+ret.data.id_espaco);
       this.listar();
       this.novo_espaco = {};
