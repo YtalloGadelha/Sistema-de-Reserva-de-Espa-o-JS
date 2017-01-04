@@ -1,0 +1,17 @@
+<!-- pessoas.html -->
+<h1>Pessoas</h1>
+<form ng-submit="ctl.salvapessoa()">
+  <fieldset>
+    <legend>Cadastrar Pessoa</legend>
+    <label>Nome</label>
+    <input ng-model="ctl.nova_pessoa.nome_pessoa" required/>
+    <br/><br/>
+    <input type="submit"/>
+  </fieldset>
+</form>
+<fieldset>
+  <legend>Listar Pessoas</legend>
+  <ul>
+    <li ng-repeat=" ev in ctl.pessoas">{{ev.id_pessoa}} | {{ev.nome_pessoa}}</li>
+  </ul>
+</fieldset>

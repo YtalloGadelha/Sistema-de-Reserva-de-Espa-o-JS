@@ -1,0 +1,20 @@
+<!-- espacos.html -->
+<h1>Espaços</h1>
+<meta charset="UTF-8">
+<form ng-submit="ctl.salvaespaco()">
+  <fieldset>
+    <legend>Cadastrar Espaços</legend>
+    <label>Nome</label>
+    <input ng-model="ctl.novo_espaco.nome_espaco" required/><br/>
+    <label>Descrição</label>
+    <input ng-model="ctl.novo_espaco.descricao_espaco" requerid/> 
+    <br/><br/>
+    <input type="submit"/>
+  </fieldset>
+</form>
+<fieldset>
+  <legend>Listar Espaços</legend>
+  <ul>
+    <li ng-repeat=" ev in ctl.espacos">{{ev.id_espaco}} | {{ev.nome_espaco}} | {{ev.descricao_espaco}}</li>
+  </ul>
+</fieldset>
